@@ -1,0 +1,77 @@
+# Student Grade Calculator
+
+print("===================================")
+print("       STUDENT GRADE CALCULATOR")
+print("===================================")
+
+# Get student details
+name = input("Enter Student Name: ")
+roll_no = input("Enter Roll Number: ")
+
+# Get subject marks
+print("\nEnter marks for 5 subjects (out of 100):")
+
+subjects = ["Tamil", "English", "Maths", "Science", "Computer Science"]
+marks = []
+
+for subject in subjects:
+    while True:
+        try:
+            mark = float(input(f"Enter {subject} marks: "))
+            if 0 <= mark <= 100:
+                marks.append(mark)
+                break
+            else:
+                print("Please enter marks between 0 and 100.")
+        except ValueError:
+            print("Please enter a valid number.")
+
+# Calculate results
+total = sum(marks)
+average = total / len(subjects)
+percentage = (total / 500) * 100
+
+# Calculate grade
+if any(mark < 35 for mark in marks):
+    grade = "F"
+    result = "FAIL"
+elif percentage >= 90:
+    grade = "A+"
+    result = "PASS"
+elif percentage >= 80:
+    grade = "A"
+    result = "PASS"
+elif percentage >= 70:
+    grade = "B"
+    result = "PASS"
+elif percentage >= 60:
+    grade = "C"
+    result = "PASS"
+elif percentage >= 50:
+    grade = "D"
+    result = "PASS"
+else:
+    grade = "E"
+    result = "PASS"
+
+# Display mark sheet
+print("\n===================================")
+print("          STUDENT MARKSHEET")
+print("===================================")
+
+print("Student Name:", name)
+print("Roll Number:", roll_no)
+
+print("\nSubject-wise Marks:")
+for i in range(len(subjects)):
+    print(subjects[i], ":", marks[i])
+
+print("-----------------------------------")
+print("Total Marks:", total, "/ 500")
+print("Average:", round(average, 2))
+print("Percentage:", round(percentage, 2), "%")
+print("Grade:", grade)
+print("Result:", result)
+print("===================================")
+print("       THANK YOU!")
+print("===================================")
